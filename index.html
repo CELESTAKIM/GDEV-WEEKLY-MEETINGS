@@ -1,0 +1,158 @@
+<!-- gdev_gis_poster.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GDEV GIS Training Poster</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #1e3a8a;
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight {
+      color: #e11d48;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      margin: 1rem 0;
+    }
+
+    .shout-box {
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 0.8rem 1rem;
+      margin: 0.5rem auto;
+      border-radius: 12px;
+      color: white;
+      background: linear-gradient(145deg, #1e3a8a, #3b82f6);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 -2px 2px rgba(255,255,255,0.2);
+      text-shadow: 1px 1px 2px black;
+      max-width: 320px;
+    }
+
+    .countdown {
+      font-size: 1.1rem;
+      margin: 1rem 0;
+      font-weight: 600;
+      color: #065f46;
+    }
+
+    .qr-section {
+      margin-top: 1.5rem;
+    }
+
+    .qr-section img {
+      width: 140px;
+      margin: 0.5rem;
+      border-radius: 12px;
+      border: 2px solid #ccc;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 0.5rem 0.4rem;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #2563eb;
+    }
+
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>GDEV GIS Training</h1>
+    <p class="highlight">Starts: Tomorrow (Wednesday)</p>
+    <p><span class="tag">This Week: Create Your First GIS Map</span></p>
+
+    <div class="shout-box">⏰ Time: 5:00 PM – 6:00 PM</div>
+    <div class="shout-box">📍 Venue: Carto Lab, DeKUT</div>
+
+    <div class="countdown" id="countdown">⏳ Loading countdown...</div>
+
+    <p>Open to all <strong>GDEV Members</strong>.</p>
+
+    <a href="https://forms.gle/FnyYWFk7orf7Jw6q7" class="btn" target="_blank">Join GDEV</a>
+    <a href="https://forms.gle/ysTbfTL1DieNqdCZ7" class="btn" target="_blank">Confirm Availability</a>
+
+    <div class="qr-section">
+      <img src="qr_join_gdev.png" alt="Join GDEV QR">
+      <img src="qr_confirm_availability.png" alt="Confirm Availability QR">
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 GDEV Club – Dedan Kimathi University
+  </footer>
+
+  <script>
+    // Countdown to May 21, 2025 17:00
+    const target = new Date("May 21, 2025 17:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        clearInterval(interval);
+        countdownEl.textContent = "✅ The meeting is starting now!";
+      } else { 
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        countdownEl.textContent = `Starts in: ${days}d ${hours}h ${minutes}m`;
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
